@@ -14,14 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/', function () {
-    $response = 'Hello Aliyun Sae Laravel Demo  ' . date('Y-m-d H:i:s');
-
-    Log::info('new request arrived.', [
-            'request' => (string)request(),
-            'response' => $response,
-        ]
-    );
-
-    return $response;
-});
+Route::any('/', 'AppController@inspire');
