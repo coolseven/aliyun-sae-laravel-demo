@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -29,6 +30,14 @@ class AppController extends Controller
                 'inspiredVisitors' => $inspiredVisitors,
             ]
         );
+
+        if ($request->wantsJson()) {
+            return new JsonResponse([
+                'quote' => $quote,
+                'quoteInChinese' => $quoteInChinese,
+                'inspiredVisitors' => $inspiredVisitors,
+            ]);
+        }
 
         return view('inspire',[
             'quote' => $quote,

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('/inspire', 'AppController@inspire');
 Route::any('/', 'AppController@inspire');
