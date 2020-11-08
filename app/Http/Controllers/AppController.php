@@ -11,11 +11,18 @@ class AppController extends Controller
 {
     public function inspire(Request $request)
     {
-        Cache::increment('cache:inspired-visitors');
-        $inspiredVisitors = (int) Cache::get('cache:inspired-visitors');
-
+        // 一句名人名言
         $quote = Inspiring::quote();
 
+        // 调用第三方的 api, 获取中文翻译
+        $translation = app('translate')->translate($quote, 'en','zh-CHS');
+        $quoteInChinese = ($translation['translation'][0]);
+
+        // 访问 redis
+        $inspiredVisitors = (int) Cache::get('cache:inspired-visitors');
+        Cache::increment('cache:inspired-visitors');
+
+        // 访问 log 系统
         Log::info('new request arrived.', [
                 'request' => $request->__toString(),
                 'quote' => $quote,
@@ -25,6 +32,7 @@ class AppController extends Controller
 
         return view('inspire',[
             'quote' => $quote,
+            'quoteInChinese' => $quoteInChinese,
             'inspiredVisitors' => $inspiredVisitors,
         ]);
     }

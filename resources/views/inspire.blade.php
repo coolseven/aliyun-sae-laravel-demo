@@ -80,6 +80,9 @@
                 <div class="title m-b-md">
                     {{ $quote }}
                 </div>
+                <div class="title m-b-md">
+                    {{ $quoteInChinese }}
+                </div>
             </div>
 
             <div class="bottom-count">

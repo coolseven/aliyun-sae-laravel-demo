@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3d88fa6639c9463d85260309c03bb68",
+    "content-hash": "7b728827282f363f9a21eb35e2fb9171",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5079,6 +5079,62 @@
                 }
             ],
             "time": "2020-07-22T23:32:04+00:00"
+        },
+        {
+            "name": "ywmelo/translate",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yw-melo/youdao-translate-package.git",
+                "reference": "a747ea23eecdf13a5a49f28042bdac7cc6c1dd27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yw-melo/youdao-translate-package/zipball/a747ea23eecdf13a5a49f28042bdac7cc6c1dd27",
+                "reference": "a747ea23eecdf13a5a49f28042bdac7cc6c1dd27",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Youdao\\Translate\\TranslateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Translate": "Youdao\\Translate\\Facade\\Translate"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Youdao\\Translate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Melo Yang",
+                    "email": "ywmelo@163.com"
+                }
+            ],
+            "description": "Youdao translate api.",
+            "support": {
+                "issues": "https://github.com/Yw-melo/youdao-translate-package/issues",
+                "source": "https://github.com/Yw-melo/youdao-translate-package/tree/master"
+            },
+            "time": "2019-06-12T07:11:04+00:00"
         }
     ],
     "packages-dev": [
