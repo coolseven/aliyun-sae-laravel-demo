@@ -38,6 +38,13 @@
                 font-size: 30px;
             }
 
+            .bottom-count {
+                position: absolute;
+                bottom: 18px;
+                text-align: center;
+                font-size: 30px;
+            }
+
             .content {
                 text-align: center;
             }
@@ -71,8 +78,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{ $inspire }}
+                    {{ $quote }}
                 </div>
+            </div>
+
+            <div class="bottom-count">
+                <span style="font-size: 60px; font-weight: bolder;">{{ $inspiredVisitors }}</span>
+                visitors has been Inspired!
             </div>
         </div>
     </body>
