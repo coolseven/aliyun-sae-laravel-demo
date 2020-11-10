@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,8 +17,18 @@ class AppController extends Controller
         $quote = Inspiring::quote();
 
         // 调用第三方的 api, 获取中文翻译
-        $translation = app('translate')->translate($quote, 'en','zh-CHS');
-        $quoteInChinese = ($translation['translation'][0]);
+        try {
+            $quoteInChinese = app('cache')->remember(
+                'cache:translation:md5_'.md5($quote),
+                random_int(50,70),
+                function() use ($quote) {
+                    $translation = app('translate')->translate($quote, 'en','zh-CHS');
+                    return ($translation['translation'][0]);
+                }
+            );
+        } catch (Exception $exception) {
+            $quoteInChinese = '[Translation Service Error] ' . $exception->getMessage();
+        }
 
         // 访问 redis
         $inspiredVisitors = (int) Cache::get('cache:inspired-visitors');
