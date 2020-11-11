@@ -87,7 +87,7 @@
 
             <div class="bottom-count">
                 <span style="font-size: 60px; font-weight: bolder;">{{ $inspiredVisitors }}</span>
-                visitors has been Inspired!
+                visitors have been Inspired!
             </div>
         </div>
     </body>
